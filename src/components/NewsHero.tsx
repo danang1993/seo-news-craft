@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import newsHero from "@/assets/news-hero.jpg";
 
 export const NewsHero = () => {
@@ -46,8 +47,9 @@ export const NewsHero = () => {
           <Button 
             size="lg" 
             className="bg-primary hover:bg-[hsl(var(--primary-hover))] text-primary-foreground font-semibold px-8"
+            asChild
           >
-            Baca Selengkapnya
+            <Link to="/artikel/1">Baca Selengkapnya</Link>
           </Button>
         </div>
       </div>

@@ -187,6 +187,39 @@ All colors MUST be HSL for semantic consistency and accessibility.
     @apply excerpt mb-4;
   }
 
+  /* Prose styling for article content */
+  .prose {
+    @apply text-foreground;
+  }
+  
+  .prose h2 {
+    @apply headline-primary text-xl md:text-2xl mb-4 mt-8 border-b border-[hsl(var(--section-divider))] pb-2;
+  }
+  
+  .prose h3 {
+    @apply headline-secondary text-lg md:text-xl mb-3 mt-6;
+  }
+  
+  .prose p {
+    @apply excerpt mb-4 leading-relaxed;
+  }
+  
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose li {
+    @apply mb-2 text-foreground;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 my-6 italic;
+  }
+  
+  .prose blockquote cite {
+    @apply block mt-2 text-sm font-semibold not-italic;
+  }
+
   /* Line clamp utilities */
   .line-clamp-2 {
     overflow: hidden;

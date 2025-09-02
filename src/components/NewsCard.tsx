@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Clock, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface NewsCardProps {
   title: string;
@@ -12,6 +13,7 @@ interface NewsCardProps {
   variant?: "featured" | "default" | "compact";
   className?: string;
   style?: React.CSSProperties;
+  articleId?: string;
 }
 
 const categoryColors: Record<string, string> = {
@@ -31,12 +33,25 @@ export const NewsCard = ({
   timestamp,
   variant = "default",
   className,
-  style
+  style,
+  articleId
 }: NewsCardProps) => {
+  const CardContent = ({ children }: { children: React.ReactNode }) => {
+    if (articleId) {
+      return (
+        <Link to={`/artikel/${articleId}`} className="block">
+          {children}
+        </Link>
+      );
+    }
+    return <>{children}</>;
+  };
+
   if (variant === "compact") {
     return (
       <article className={cn("group cursor-pointer", className)} style={style}>
-        <div className="flex gap-4">
+        <CardContent>
+          <div className="flex gap-4">
           <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20">
             <img
               src={image}
@@ -62,6 +77,7 @@ export const NewsCard = ({
             </div>
           </div>
         </div>
+        </CardContent>
       </article>
     );
   }
@@ -75,6 +91,7 @@ export const NewsCard = ({
       )}
       style={style}
     >
+      <CardContent>
       <div className={cn(
         "relative overflow-hidden",
         variant === "featured" ? "md:flex-1" : "aspect-[16/9]"
@@ -124,6 +141,7 @@ export const NewsCard = ({
           </div>
         </div>
       </div>
+      </CardContent>
     </article>
   );
 };

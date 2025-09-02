@@ -94,6 +94,7 @@ export const NewsGrid = () => {
               {...featuredNews}
               variant="featured"
               className="mb-8"
+              articleId="1"
             />
 
             {/* News Grid */}
@@ -104,6 +105,7 @@ export const NewsGrid = () => {
                   {...article}
                   className="fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  articleId={index === 0 ? "2" : "1"}
                 />
               ))}
             </div>
